@@ -24,6 +24,7 @@ function verificarChute() {
         exibirTextoNaTela('h1', 'Você acertou!');
         exibirTextoNaTela('p',mensagemTentativa);
         document.getElementById('reiniciar').removeAttribute('disabled');
+        return tentativas;
 
 
 
@@ -35,10 +36,13 @@ function verificarChute() {
     } else if(chute < numeroSecreto){
         exibirTextoNaTela('p','O número secreto é maior!');
         apagarInput();
+    } if(chute === ''){
+        exibirTextoNaTela('p','Digite um número na barra!')
+        return tentativas;
     }
     tentativas++;
-
 }
+
 
 function gerarNumeroAleatorio() {
     let numeroEscolhido = parseInt(Math.random() * limiteDeNumeros + 1);
